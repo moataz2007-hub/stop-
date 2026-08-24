@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stop Moataz</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #2b2b3d 0%, #171722 45%, #0d0d13 100%);
+            color: #fff;
+        }
+
+        .container {
+            min-height: 100vh;
+            width: 100%;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card {
+            width: min(100%, 600px);
+            padding: clamp(28px, 6vw, 55px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .title {
+            width: 100%;
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            line-height: 1.25;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+        }
+
+        button {
+            width: min(100%, 280px);
+            min-height: 55px;
+            padding: 14px 24px;
+
+            border: none;
+            border-radius: 14px;
+
+            background: linear-gradient(135deg, #ff4d6d, #e11d48);
+            color: white;
+
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.3);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(225, 29, 72, 0.4);
+            filter: brightness(1.08);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #count {
+            min-width: 100px;
+            padding: 12px 24px;
+
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            line-height: 1;
+            font-weight: 800;
+
+            color: #fff;
+
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            text-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+
+            .card {
+                padding: 30px 20px;
+                gap: 20px;
+                border-radius: 20px;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            button {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1 class="title">
+                another day without it plz moataz dont think about it plz
+            </h1>
+
+            <p class="subtitle">
+                Every click counts.
+            </p>
+
+            <button onclick="counterfun()">
+                stop moataz
+            </button>
+
+            <h1 id="count">0</h1>
+
+        </div>
+
+    </div>
+
+    <script>
+        let counter = document.querySelector("#count")
+        // console.log(counter)
+        let i = localStorage.getItem("counter");
+
+        function counterfun() {
+            i++;
+            localStorage.setItem("counter", i)
+            counter.innerHTML = i
+        }
+
+        counter.textContent = localStorage.getItem("counter")
+    </script>
+
+</body>
+</html>
